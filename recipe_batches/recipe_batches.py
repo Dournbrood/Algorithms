@@ -10,13 +10,12 @@ def recipe_batches(recipe, ingredients):
         return 0
 
     for ingredient, amount in ingredients.items():
-        if amount // recipe[ingredient] < 1:
+        flooredAmount = amount // recipe[ingredient]
+        if flooredAmount < 1:
             return 0
-        else:
-            if num_batches == None:
-                num_batches = amount // recipe[ingredient]
-            if amount // recipe[ingredient] < num_batches:
-                num_batches = amount // recipe[ingredient]
+        elif num_batches == None or flooredAmount < num_batches:
+            num_batches = flooredAmount
+
     return num_batches
 
 
